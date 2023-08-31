@@ -1,5 +1,5 @@
 import "./style.css";
-import filelistURL from "./filelist.txt";
+import filelist from "./filelist.txt";
 
 //const filelistURL =
 //  "https://raw.githubusercontent.com/swith-wiz-kev/git_test/main/filelist2.txt";
@@ -11,11 +11,11 @@ function File(fileName, folderName, youtubeUrl) {
   this.youtubeUrl = youtubeUrl;
 }
 
-async function readFile() {
+/* async function readFile() {
   const response = await fetch(filelistURL);
   const result = await response.text();
   return result;
-}
+} */
 
 /* function removeNonStayc(fullText) {
   return fullText.slice(2683206 + 44, 3014287 - 3);
@@ -63,7 +63,7 @@ function processText(fullText) {
 function encodeString(string) {
   let encodedString = "";
   for (let index = 0; index < string.length; index++) {
-    charCode = string.charCodeAt(index).toString();
+    const charCode = string.charCodeAt(index).toString();
     encodedString = encodedString + charCode + "-";
   }
   return encodedString;
@@ -102,7 +102,7 @@ function createFolder(folderName) {
 
 function addFile(fileName, folderName, youtubeUrl) {
   const folderNameEncoded = encodeString(folderName);
-  targetSubFolder = document.querySelector(".c" + folderNameEncoded);
+  const targetSubFolder = document.querySelector(".c" + folderNameEncoded);
   if (youtubeUrl == "") {
     const textOnly = document.createElement("li");
     textOnly.textContent = fileName;
@@ -119,7 +119,7 @@ function addDownloadCode(youtubeUrl, folderName) {
   if (youtubeUrl == "") {
   } else {
     const folderNameEncoded = encodeString(folderName);
-    targetTextArea = document.querySelector(
+    const targetTextArea = document.querySelector(
       ".c" + folderNameEncoded + ">.downloadcodes"
     );
     targetTextArea.textContent += youtubeUrl + " ";
@@ -147,7 +147,7 @@ function addTooltip(element, tooltip) {
 }
 
 function processResponseTitle(res, youtubeUrl, counter) {
-  targetElement = document.querySelector(`[href="${youtubeUrl}"]`);
+  const targetElement = document.querySelector(`[href="${youtubeUrl}"]`);
   if (targetElement == null) {
     fetchLoop(counter + 1);
   } else {
@@ -209,8 +209,8 @@ function printStatus() {
   fetchLoop(0);
 }
 
-readFile().then((value) => {
-  processText(value);
-  printLibrary(myArray);
-  printStatus();
-});
+//readFile().then((value) => {
+processText(filelist);
+printLibrary(myArray);
+printStatus();
+//});
