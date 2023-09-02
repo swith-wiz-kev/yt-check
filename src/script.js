@@ -1,5 +1,5 @@
 import "./style.css";
-import filelist from "./filelist.txt";
+import filelist from "./filelist2.txt";
 
 //const filelistURL =
 //  "https://raw.githubusercontent.com/swith-wiz-kev/git_test/main/filelist2.txt";
