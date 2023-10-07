@@ -1,5 +1,5 @@
 import "./style.css";
-import filelist from "./filelist2.txt";
+import filelist from "./filelist1.txt";
 
 //const filelistURL =
 //  "https://raw.githubusercontent.com/swith-wiz-kev/git_test/main/filelist2.txt";
@@ -49,7 +49,7 @@ function getYoutubeUrl(fileName) {
 
 function processText(fullText) {
   const splitTextArray = readLines(fullText);
-  for (let index = 0; index < splitTextArray.length - 1; index++) {
+  for (let index = 0; index < splitTextArray.length; index++) {
     const splitText = splitTextArray[index];
     const deeperSplitArray = splitText.split("\\");
     const fileName = deeperSplitArray[deeperSplitArray.length - 1];

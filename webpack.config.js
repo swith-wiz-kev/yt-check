@@ -1,11 +1,40 @@
 const path = require("path");
 const json5 = require("json5");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+let htmlPageNames = ["stayc1", "stayc2", "stayc3"];
+let multipleHtmlPlugins = htmlPageNames.map((name) => {
+  return new HtmlWebpackPlugin({
+    title: `stayc fancams ${name.slice(-1)}`,
+    template: `./src/stayc/stayc.html`, // relative path to the HTML files
+    filename: `${name}.html`, // output HTML files
+    chunks: [`${name}`], // respective JS files
+  });
+});
 
 module.exports = {
-  entry: "./src/script.js",
+  mode: "development",
+  entry: {
+    stayc1: "./src/stayc/stayc1.js",
+    stayc2: "./src/stayc/stayc2.js",
+    stayc3: "./src/stayc/stayc3.js",
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: "stayc fancams", // this will be the index.html title
+      filename: `index.html`,
+      template: "./src/index.html",
+      inject: false,
+    }),
+  ].concat(multipleHtmlPlugins),
+  devtool: "inline-source-map",
+  devServer: {
+    static: "./dist",
+  },
   output: {
-    filename: "script.js",
+    filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
+    clean: true,
   },
   module: {
     rules: [
