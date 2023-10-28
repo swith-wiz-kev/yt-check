@@ -2,7 +2,7 @@ const path = require("path");
 const json5 = require("json5");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-let htmlPageNames = ["stayc1", "stayc2", "stayc3"];
+let htmlPageNames = ["stayc1", "stayc2", "stayc3", "stayc4"];
 let multipleHtmlPlugins = htmlPageNames.map((name) => {
   return new HtmlWebpackPlugin({
     title: `stayc fancams ${name.slice(-1)}`,
@@ -18,6 +18,7 @@ module.exports = {
     stayc1: "./src/stayc/stayc1.js",
     stayc2: "./src/stayc/stayc2.js",
     stayc3: "./src/stayc/stayc3.js",
+    stayc4: "./src/stayc/stayc4.js",
   },
   plugins: [
     new HtmlWebpackPlugin({
