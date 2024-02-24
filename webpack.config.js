@@ -9,6 +9,7 @@ let htmlPageNames = [
   "stayc4",
   "stayc5",
   "stayc6",
+  "stayc7",
 ];
 let multipleHtmlPlugins = htmlPageNames.map((name) => {
   return new HtmlWebpackPlugin({
@@ -28,6 +29,7 @@ module.exports = {
     stayc4: "./src/stayc/stayc4.js",
     stayc5: "./src/stayc/stayc5.js",
     stayc6: "./src/stayc/stayc6.js",
+    stayc7: "./src/stayc/stayc7.js",
   },
   plugins: [
     new HtmlWebpackPlugin({
